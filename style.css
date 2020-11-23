@@ -42,6 +42,7 @@ body {
 	grid-gap: 20px;
 	background: rgba(0, 0, 0, 0.5);
 	width: 100%;
+}
 
 #game-button-new {
 	min-height: 100%;
