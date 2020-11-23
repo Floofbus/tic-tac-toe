@@ -33,6 +33,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
+	padding: 20px;
 }
 
 #game-button-container {
@@ -48,5 +49,29 @@ body {
 	min-height: 100%;
 	min-width: 100%;
 	background: black;
+}
+
+.game-tile {
+	border-color: gray;
+	border-width: 3px;
+	border-style: none;
+	height: 100%;
+	width: 100%;
+}
+
+.bt {
+	border-top-style: solid;
+}
+
+.br {
+	border-right-style: solid;
+}
+
+.bb {
+	border-bottom-style: solid;
+}
+
+.bl {
+	border-left-style: solid;
 }
 
