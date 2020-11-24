@@ -35,6 +35,13 @@ let gameController = (function GameController () {
 	let gameActive = true;
 	gameBoard.clearBoard();
 
+	// Setup event listeners
+	let tiles = Array.from(document.querySelectorAll("div .game-tile"));
+	for (let i = 0; i < tiles.length; i++) {
+		tiles[i].addEventListener('click', tileInput);
+	}
+	document.getElementById('game-button-new').addEventListener('click', newGame);
+
 	function newGame() {
 		playerTurn = "x";
 		gameActive = true;
@@ -87,12 +94,18 @@ let gameController = (function GameController () {
 			gameActive = false;
 			return gameBoard.getTile(1, 1) ;
 		}
+
 		// No winner yet
 		return null;
 	}
 
 	function showWinner() {
 		alert(`${checkForWinner().toUpperCase()} wins!`);
+	}
+
+	function tileInput(event) {
+		let eTarget = event.currentTarget;
+		placeMark(eTarget.getAttribute('data-column'), eTarget.getAttribute('data-row'));
 	}
 
 	return {
@@ -103,30 +116,3 @@ let gameController = (function GameController () {
 
 
 })(gameBoard);
-
-function playGame () {
-	// Horizontal
-	gameController.placeMark(0, 0);
-	gameController.placeMark(1, 1);
-	gameController.placeMark(1, 0);
-	gameController.placeMark(0, 1);
-	gameController.placeMark(2, 0);
-	// Vertical
-	gameController.newGame();
-	gameController.placeMark(0, 0);
-	gameController.placeMark(2, 0);
-	gameController.placeMark(0, 1);
-	gameController.placeMark(2, 2);
-	gameController.placeMark(0, 2);
-	// Diagonal
-	gameController.newGame()
-	gameController.placeMark(0, 0);
-	gameController.placeMark(0, 1);
-	gameController.placeMark(1, 1);
-	gameController.placeMark(1, 0);
-	gameController.placeMark(2, 2);
-}
-
-function playerFactory() {
-
-}
