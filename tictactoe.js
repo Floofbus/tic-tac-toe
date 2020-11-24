@@ -46,6 +46,7 @@ let gameController = (function GameController () {
 		playerTurn = "x";
 		gameActive = true;
 		gameBoard.clearBoard();
+		document.querySelector("#status").textContent = "Playing...";
 	}
 
 	function placeMark(x, y) {
@@ -109,7 +110,8 @@ let gameController = (function GameController () {
 	}
 
 	function showWinner() {
-		alert(`${checkForWinner().toUpperCase()} wins!`);
+		document.querySelector("#status").textContent = `${checkForWinner().toUpperCase()} wins!`;
+		//alert(`${checkForWinner().toUpperCase()} wins!`);
 	}
 
 	function tileInput(event) {
