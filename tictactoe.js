@@ -47,17 +47,21 @@ let gameController = (function GameController () {
 		gameActive = true;
 		gameBoard.clearBoard();
 		document.querySelector("#status").textContent = "Playing...";
+		// Play audio
+		document.querySelector('#music').play();
 	}
 
 	function placeMark(x, y) {
 		if(!gameActive || gameBoard.getTile(x, y) != null) return;
 
 		if (playerTurn == "x") {
-			gameBoard.setTile(x, y, "x");
+			//gameBoard.setTile(x, y, "x");
+			gameBoard.setTile(x, y, "⍟");
 			playerTurn = "o"
 		}
 		else {
-			gameBoard.setTile(x, y, "o");
+			//gameBoard.setTile(x, y, "o");
+			gameBoard.setTile(x, y, "✡");
 			playerTurn = "x"
 		}
 		if (checkForWinner() != null) {
