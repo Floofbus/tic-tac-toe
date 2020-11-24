@@ -60,25 +60,29 @@ let gameController = (function GameController () {
 	function checkForWinner() {
 		// Check columns
 		for (let i = 0; i < 2; i++) {
-			if (gameBoard.getTile(i, 0) == gameBoard.getTile(i, 1) == gameBoard.getTile(i, 2)) {
-				if (gameBoard.getTile(i, 0) != null) {
-					gameActive = false;
-					return gameBoard.getTile(i, 0);
-				}
+			if (gameBoard.getTile(i, 0) == gameBoard.getTile(i, 1) && 
+				gameBoard.getTile(i, 0) == gameBoard.getTile(i, 2) &&
+				gameBoard.getTile(i, 0) != null) {
+				
+				gameActive = false;
+				return gameBoard.getTile(i, 0);
 			}
 		}
 		// check rows
 		for (let i = 0; i < 2; i++) {
-			if (gameBoard.getTile(0, i) == gameBoard.getTile(1, i) == gameBoard.getTile(2, i)) {
-				if (gameBoard.getTile(0, i) != null) {
-					gameActive = false;
-					return gameBoard.getTile(0, i);
-				}
+			if (gameBoard.getTile(0, i) == gameBoard.getTile(1, i) &&
+				gameBoard.getTile(0, i) == gameBoard.getTile(2, i) &&
+				gameBoard.getTile(0, i) != null) {
+
+				gameActive = false;
+				return gameBoard.getTile(0, i);
 			}
 		}
 		// check diagonals
-		if ((gameBoard.getTile(0, 0) == (gameBoard.getTile(1, 1) == gameBoard.getTile(2, 2))) ||
-			(gameBoard.getTile(2, 0) == (gameBoard.getTile(1, 1) == gameBoard.getTile(0, 2)))) {
+		if ((gameBoard.getTile(0, 0) == gameBoard.getTile(1, 1) &&
+			 gameBoard.getTile(0, 0) == gameBoard.getTile(2, 2)) ||
+			(gameBoard.getTile(2, 0) == gameBoard.getTile(1, 1) &&
+			 gameBoard.getTile(2, 0) == gameBoard.getTile(0, 2))) {
 			if (gameBoard.getTile(1, 1) == null) return null;
 			gameActive = false;
 			return gameBoard.getTile(1, 1) ;
@@ -101,11 +105,26 @@ let gameController = (function GameController () {
 })(gameBoard);
 
 function playGame () {
+	// Horizontal
 	gameController.placeMark(0, 0);
 	gameController.placeMark(1, 1);
 	gameController.placeMark(1, 0);
 	gameController.placeMark(0, 1);
 	gameController.placeMark(2, 0);
+	// Vertical
+	gameController.newGame();
+	gameController.placeMark(0, 0);
+	gameController.placeMark(2, 0);
+	gameController.placeMark(0, 1);
+	gameController.placeMark(2, 2);
+	gameController.placeMark(0, 2);
+	// Diagonal
+	gameController.newGame()
+	gameController.placeMark(0, 0);
+	gameController.placeMark(0, 1);
+	gameController.placeMark(1, 1);
+	gameController.placeMark(1, 0);
+	gameController.placeMark(2, 2);
 }
 
 function playerFactory() {
