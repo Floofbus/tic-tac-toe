@@ -66,7 +66,7 @@ let gameController = (function GameController () {
 
 	function checkForWinner() {
 		// Check columns
-		for (let i = 0; i < 2; i++) {
+		for (let i = 0; i <= 2; i++) {
 			if (gameBoard.getTile(i, 0) == gameBoard.getTile(i, 1) && 
 				gameBoard.getTile(i, 0) == gameBoard.getTile(i, 2) &&
 				gameBoard.getTile(i, 0) != null) {
@@ -76,7 +76,7 @@ let gameController = (function GameController () {
 			}
 		}
 		// check rows
-		for (let i = 0; i < 2; i++) {
+		for (let i = 0; i <= 2; i++) {
 			if (gameBoard.getTile(0, i) == gameBoard.getTile(1, i) &&
 				gameBoard.getTile(0, i) == gameBoard.getTile(2, i) &&
 				gameBoard.getTile(0, i) != null) {
@@ -95,8 +95,17 @@ let gameController = (function GameController () {
 			return gameBoard.getTile(1, 1) ;
 		}
 
-		// No winner yet
-		return null;
+		// Check if the board is full
+		let isFull = true;
+		for (let i = 0; i <= 2; i++) {
+			for (let j = 0; j <= 2; j++) {
+				if (gameBoard.getTile(i, j) == null) {
+					isFull = false;
+				}
+			}
+		}
+
+		return (isFull) ? "nobody" : null;
 	}
 
 	function showWinner() {
