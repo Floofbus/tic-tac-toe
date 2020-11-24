@@ -14,13 +14,14 @@ body {
 }
 
 #main-container {
-	background: gray;
+	background: linear-gradient(gray, rgba(25, 25, 25, 1));
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	padding: 20px;
-	border-radius: 10px
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 #game-board {
@@ -38,7 +39,7 @@ body {
 
 #game-button-container {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-template-rows: 50px;
 	grid-gap: 20px;
 	background: rgba(0, 0, 0, 0.5);
@@ -48,7 +49,24 @@ body {
 #game-button-new {
 	min-height: 100%;
 	min-width: 100%;
-	background: black;
+	background: blue;
+	color: white;
+	font-family: sans-serif;
+	font-size: 36px;
+	font-weight: 200;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#game-button-new:hover {
+	background: linear-gradient(0deg, blue, purple);
+}
+
+#game-button-new p {
+	padding-top: 5px;
+	margin: 0px;
+	user-select: none;
 }
 
 .game-tile {
@@ -57,6 +75,12 @@ body {
 	border-style: none;
 	height: 100%;
 	width: 100%;
+	font-family: sans-serif;
+	font-size: 128px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
 }
 
 .bt {
